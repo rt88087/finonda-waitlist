@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>finonda — admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#0E5C6E;--teal2:#0891B2;--terra:#C96A4B;--ink:#1E2B2E;--slate:#5E6E72;--paper:#EFEBE4;--cream:#FBFAF7;--line:#E1DCD3;--green:#2E9E5B}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#E6E1D8;font-family:'Inter',system-ui,sans-serif;color:var(--ink);min-height:100vh}
+  .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 60px}
+  .brandrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+  .pill{font-size:11px;font-weight:600;color:var(--teal);background:#E1EEF1;border-radius:999px;padding:5px 12px}
+  /* login */
+  .login{max-width:380px;margin:8vh auto 0;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:28px 26px;box-shadow:0 10px 34px rgba(30,43,46,.10)}
+  .login h1{font-family:'Poppins';font-weight:600;font-size:20px;margin:14px 0 4px}
+  .login p{font-size:13px;color:var(--slate);margin:0 0 18px}
+  label{font-size:12px;color:var(--slate);display:block;margin:12px 0 5px}
+  input{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 13px;font-size:15px;font-family:'Inter';background:#fff;color:var(--ink)}
+  input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 2px rgba(14,92,110,.12)}
+  .btn{height:48px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-family:'Poppins';font-weight:500;font-size:15px;cursor:pointer;width:100%;margin-top:18px}
+  .btn:hover{background:#0b4c5c}.btn[disabled]{opacity:.6;cursor:default}
+  .btn.ghost{background:#fff;color:var(--teal);border:1px solid var(--line);width:auto;height:38px;padding:0 16px;margin:0;font-size:13px}
+  .err{color:#C0442E;font-size:13px;margin-top:12px;min-height:16px}
+  /* dashboard */
+  .hidden{display:none}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .topbar h1{font-family:'Poppins';font-weight:600;font-size:22px;margin:0}
+  .who{font-size:12.5px;color:var(--slate)}
+  .actions{display:flex;gap:8px}
+  .sect{font-family:'Poppins';font-weight:600;font-size:15px;margin:26px 0 12px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .sect .dot{width:8px;height:8px;border-radius:50%;background:var(--terra)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .card{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .card .l{font-size:12px;color:var(--slate)}
+  .card .n{font-size:24px;font-weight:600;color:var(--teal);margin-top:3px;font-family:'Poppins'}
+  .card .s{font-size:11.5px;color:var(--slate);margin-top:2px}
+  .panel{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
+  .panel h3{font-size:13px;margin:0 0 10px;font-weight:600;color:var(--slate)}
+  .chartbox{position:relative;height:260px}
+  .split{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+  @media(max-width:720px){.split{grid-template-columns:1fr}}
+  .foot{font-size:11.5px;color:#9AA39F;margin-top:26px;text-align:center}
+  a{color:var(--teal)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brandrow">
+    <svg width="110" height="24" viewBox="-19 -4 3942 873" xmlns="http://www.w3.org/2000/svg" aria-label="finonda">
+      <path d="M323 266L323 381L226 381L226 820L84 820L84 381L21 381L21 266L84 266L84 238Q84 136 142 88Q200 40 317 43L317 161Q266 160 246 178Q226 196 226 243L226 266L323 266M420 266L560 266L560 820L420 820L420 266M1011 258Q1110 258 1171 320.50Q1232 383 1232 495L1232 820L1092 820L1092 514Q1092 448 1059 412.50Q1026 377 969 377Q911 377 877.50 412.50Q844 448 844 514L844 820L704 820L704 266L844 266L844 335Q872 299 915.50 278.50Q959 258 1011 258M1611 829Q1531 829 1467 793.50Q1403 758 1366.50 693Q1330 628 1330 543Q1330 458 1367.50 393Q1405 328 1470 292.50Q1535 257 1615 257Q1695 257 1760 292.50Q1825 328 1862.50 393Q1900 458 1900 543Q1900 628 1861.50 693Q1823 758 1757.50 793.50Q1692 829 1611 829M1611 707Q1649 707 1682.50 688.50Q1716 670 1736 633Q1756 596 1756 543Q1756 464 1714.50 421.50Q1673 379 1613 379Q1553 379 1512.50 421.50Q1472 464 1472 543Q1472 622 1511.50 664.50Q1551 707 1611 707M2310 258Q2409 258 2470 320.50Q2531 383 2531 495L2531 820L2391 820L2391 514Q2391 448 2358 412.50Q2325 377 2268 377Q2210 377 2176.50 412.50Q2143 448 2143 514L2143 820L2003 820L2003 266L2143 266L2143 335Q2171 299 2214.50 278.50Q2258 258 2310 258M2628 541Q2628 457 2661.50 392Q2695 327 2753 292Q2811 257 2882 257Q2936 257 2985 280.50Q3034 304 3063 343L3063 80L3205 80L3205 820L3063 820L3063 738Q3037 779 2990 804Q2943 829 2881 829Q2811 829 2753 793Q2695 757 2661.50 691.50Q2628 626 2628 541M3064 543Q3064 492 3044 455.50Q3024 419 2990 399.50Q2956 380 2917 380Q2878 380 2845 399Q2812 418 2791.50 454.50Q2771 491 2771 541Q2771 591 2791.50 628.50Q2812 666 2845.50 686Q2879 706 2917 706Q2956 706 2990 686.50Q3024 667 3044 630.50Q3064 594 3064 543M3306 541Q3306 457 3339.50 392Q3373 327 3430.50 292Q3488 257 3559 257Q3621 257 3667.50 282Q3714 307 3742 345L3742 266L3883 266L3883 820L3742 820L3742 739Q3715 778 3667.50 803.50Q3620 829 3558 829Q3488 829 3430.50 793Q3373 757 3339.50 691.50Q3306 626 3306 541M3742 543Q3742 492 3722 455.50Q3702 419 3668 399.50Q3634 380 3595 380Q3556 380 3523 399Q3490 418 3469.50 454.50Q3449 491 3449 541Q3449 591 3469.50 628.50Q3490 666 3523.50 686Q3557 706 3595 706Q3634 706 3668 686.50Q3702 667 3722 630.50Q3742 594 3742 543" fill="#0E5C6E"/>
+      <circle cx="490" cy="118" r="82" fill="#C96A4B"/>
+    </svg>
+    <span class="pill">Admin</span>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="login" class="login">
+    <h1>Admin sign in</h1>
+    <p>Restricted to finonda administrators.</p>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" placeholder="you@finonda.com">
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="••••••••">
+      <button class="btn" id="signinBtn" type="submit">Sign in</button>
+    </form>
+    <div class="err" id="loginErr" role="alert"></div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dash" class="hidden">
+    <div class="topbar">
+      <h1>Admin dashboard</h1>
+      <div class="actions">
+        <span class="who" id="who"></span>
+        <button class="btn ghost" id="refreshBtn">Refresh</button>
+        <button class="btn ghost" id="signoutBtn">Sign out</button>
+      </div>
+    </div>
+    <div class="who" id="asof"></div>
+
+    <div class="sect"><span class="dot"></span>App &amp; performance</div>
+    <div class="cards" id="cardsApp"></div>
+    <div class="panel">
+      <h3>Growth — last 30 days (new per day)</h3>
+      <div class="chartbox"><canvas id="growthChart" role="img" aria-label="Line chart of new users, expenses and waitlist signups per day over the last 30 days"></canvas></div>
+    </div>
+
+    <div class="sect"><span class="dot"></span>Users &amp; transactions <span style="font-weight:400;font-size:12px;color:var(--slate)">(aggregate)</span></div>
+    <div class="cards" id="cardsTx"></div>
+    <div class="split">
+      <div class="panel">
+        <h3>Expenses per day — last 30 days</h3>
+        <div class="chartbox"><canvas id="expChart" role="img" aria-label="Bar chart of expenses recorded per day over the last 30 days"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Expenses by status</h3>
+        <div class="chartbox"><canvas id="statusChart" role="img" aria-label="Doughnut chart of expenses by status"></canvas></div>
+      </div>
+    </div>
+
+    <div class="foot">finonda admin · aggregate metrics only · <a href="https://sentry.io" target="_blank" rel="noopener">Sentry</a> handles crash &amp; error monitoring</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+const SUPABASE_URL = 'https://dzwspklnuuvbssszqxci.supabase.co'
+const PUBLISHABLE_KEY = 'sb_publishable_3lwrDJZBDkVyP8q9DI0sxQ_Sxvkb2cc'
+const FUNC = SUPABASE_URL + '/functions/v1/admin-stats'
+const sb = createClient(SUPABASE_URL, PUBLISHABLE_KEY)
+
+const $ = (id) => document.getElementById(id)
+const inr = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 })
+const num = new Intl.NumberFormat('en-IN')
+let charts = []
+
+function show(view) {
+  $('login').classList.toggle('hidden', view !== 'login')
+  $('dash').classList.toggle('hidden', view !== 'dash')
+}
+
+async function loadDash() {
+  const { data: { session } } = await sb.auth.getSession()
+  if (!session) { show('login'); return }
+  const res = await fetch(FUNC, {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + session.access_token, 'apikey': PUBLISHABLE_KEY, 'Content-Type': 'application/json' },
+  })
+  if (res.status === 403) { $('loginErr').textContent = 'This account is not an administrator.'; await sb.auth.signOut(); show('login'); return }
+  if (!res.ok) { $('loginErr').textContent = 'Could not load stats (' + res.status + ').'; return }
+  const { email, stats } = await res.json()
+  $('who').textContent = email
+  render(stats)
+  show('dash')
+}
+
+function card(label, n, sub) {
+  return '<div class="card"><div class="l">' + label + '</div><div class="n">' + n + '</div>' + (sub ? '<div class="s">' + sub + '</div>' : '') + '</div>'
+}
+
+function render(s) {
+  $('asof').textContent = 'As of ' + new Date(s.generated_at).toLocaleString('en-IN')
+  $('cardsApp').innerHTML =
+    card('Waitlist signups', num.format(s.waitlist_total)) +
+    card('App users', num.format(s.users_total), s.users_onboarded + ' onboarded') +
+    card('Active (7d)', num.format(s.users_active_7d), num.format(s.users_active_30d) + ' in 30d') +
+    card('Households', num.format(s.households_total)) +
+    card('New users (7d)', num.format(s.users_new_7d)) +
+    card('OCR scans (30d)', num.format(s.scans_30d), num.format(s.scans_total) + ' all-time') +
+    card('Notifications (30d)', num.format(s.notifications_30d)) +
+    card('AI scan logs', num.format(s.ai_scans_total))
+
+  $('cardsTx').innerHTML =
+    card('Expenses', num.format(s.expenses_count), num.format(s.expenses_7d) + ' in last 7d') +
+    card('Expense volume', '₹' + inr.format(s.expenses_volume)) +
+    card('Income entries', num.format(s.income_count)) +
+    card('Income volume', '₹' + inr.format(s.income_volume)) +
+    card('Line items', num.format(s.line_items_count)) +
+    card('Avg expenses / household', s.households_total ? num.format(Math.round(s.expenses_count / s.households_total)) : '0')
+
+  charts.forEach((c) => c.destroy()); charts = []
+  const C = window.Chart
+
+  // merge the three daily series onto one date axis
+  const dates = new Set()
+  ;['users_series', 'expenses_series', 'signups_series'].forEach((k) => (s[k] || []).forEach((r) => dates.add(r.d)))
+  const labels = [...dates].sort()
+  const seriesFor = (k) => { const m = Object.fromEntries((s[k] || []).map((r) => [r.d, r.n])); return labels.map((d) => m[d] || 0) }
+  const fmtLabels = labels.map((d) => new Date(d).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' }))
+
+  charts.push(new C($('growthChart'), {
+    type: 'line',
+    data: { labels: fmtLabels, datasets: [
+      { label: 'New users', data: seriesFor('users_series'), borderColor: '#0E5C6E', backgroundColor: 'rgba(14,92,110,.10)', tension: .3, fill: true, pointRadius: 2 },
+      { label: 'New expenses', data: seriesFor('expenses_series'), borderColor: '#C96A4B', backgroundColor: 'rgba(201,106,75,.08)', borderDash: [5, 4], tension: .3, pointRadius: 2 },
+      { label: 'Waitlist signups', data: seriesFor('signups_series'), borderColor: '#0891B2', backgroundColor: 'rgba(8,145,178,.08)', borderDash: [2, 3], tension: .3, pointRadius: 2 },
+    ] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } },
+  }))
+
+  charts.push(new C($('expChart'), {
+    type: 'bar',
+    data: { labels: fmtLabels, datasets: [{ data: seriesFor('expenses_series'), backgroundColor: '#0E5C6E', borderRadius: 4 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } },
+  }))
+
+  const byStatus = s.expenses_by_status || {}
+  const stKeys = Object.keys(byStatus)
+  charts.push(new C($('statusChart'), {
+    type: 'doughnut',
+    data: { labels: stKeys, datasets: [{ data: stKeys.map((k) => byStatus[k]), backgroundColor: ['#0E5C6E', '#C96A4B', '#0891B2', '#2E9E5B', '#8A6BBE'] }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } } },
+  }))
+}
+
+$('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault()
+  $('loginErr').textContent = ''
+  const btn = $('signinBtn'); btn.disabled = true; btn.textContent = 'Signing in…'
+  const { error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('password').value })
+  btn.disabled = false; btn.textContent = 'Sign in'
+  if (error) { $('loginErr').textContent = error.message || 'Sign in failed.'; return }
+  await loadDash()
+})
+
+$('refreshBtn').addEventListener('click', loadDash)
+$('signoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); show('login') })
+
+loadDash()
+</script>
+</body>
+</html>
