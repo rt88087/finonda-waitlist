@@ -24,7 +24,9 @@
   .btn{height:48px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-family:'Poppins';font-weight:500;font-size:15px;cursor:pointer;width:100%;margin-top:18px}
   .btn:hover{background:#0b4c5c}.btn[disabled]{opacity:.6;cursor:default}
   .btn.ghost{background:#fff;color:var(--teal);border:1px solid var(--line);width:auto;height:38px;padding:0 16px;margin:0;font-size:13px}
-  .err{color:#C0442E;font-size:13px;margin-top:12px;min-height:16px}
+  .err{color:#B23B22;font-size:14px;margin-top:14px;min-height:16px;line-height:1.45}
+  .err.show{background:#FBEAE6;border:1px solid #F0C4B8;border-radius:10px;padding:10px 12px}
+  .hint{font-size:12px;color:var(--slate);margin-top:14px;line-height:1.5;border-top:1px solid var(--line);padding-top:12px}
   /* dashboard */
   .hidden{display:none}
   .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
@@ -70,6 +72,7 @@
       <button class="btn" id="signinBtn" type="submit">Sign in</button>
     </form>
     <div class="err" id="loginErr" role="alert"></div>
+    <div class="hint">Sign in with your <b>finonda app account</b> — the same email and password you use in the app. (cx@finonda.com is a mailbox, not an app login.)</div>
   </div>
 
   <!-- DASHBOARD -->
@@ -127,18 +130,27 @@ function show(view) {
   $('dash').classList.toggle('hidden', view !== 'dash')
 }
 
-async function loadDash() {
+function setErr(msg) { const e = $('loginErr'); e.textContent = msg || ''; e.classList.toggle('show', !!msg) }
+
+async function loadDash(showErrors) {
   const { data: { session } } = await sb.auth.getSession()
   if (!session) { show('login'); return }
-  const res = await fetch(FUNC, {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + session.access_token, 'apikey': PUBLISHABLE_KEY, 'Content-Type': 'application/json' },
-  })
-  if (res.status === 403) { $('loginErr').textContent = 'This account is not an administrator.'; await sb.auth.signOut(); show('login'); return }
-  if (!res.ok) { $('loginErr').textContent = 'Could not load stats (' + res.status + ').'; return }
+  let res
+  try {
+    res = await fetch(FUNC, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + session.access_token, 'apikey': PUBLISHABLE_KEY, 'Content-Type': 'application/json' },
+    })
+  } catch (e) {
+    if (showErrors) setErr('Network error reaching the server. Please try again.')
+    return
+  }
+  if (res.status === 403) { setErr('This account is signed in but is not an administrator.'); await sb.auth.signOut(); show('login'); return }
+  if (!res.ok) { if (showErrors) setErr('Could not load stats (' + res.status + ').'); return }
   const { email, stats } = await res.json()
+  setErr('')
   $('who').textContent = email
-  render(stats)
+  try { render(stats) } catch (e) { console.error('render failed', e); setErr('Signed in, but a chart failed to render.') }
   show('dash')
 }
 
@@ -203,18 +215,18 @@ function render(s) {
 
 $('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault()
-  $('loginErr').textContent = ''
+  setErr('')
   const btn = $('signinBtn'); btn.disabled = true; btn.textContent = 'Signing in…'
   const { error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('password').value })
   btn.disabled = false; btn.textContent = 'Sign in'
-  if (error) { $('loginErr').textContent = error.message || 'Sign in failed.'; return }
-  await loadDash()
+  if (error) { setErr(error.message || 'Sign in failed.'); return }
+  await loadDash(true)
 })
 
-$('refreshBtn').addEventListener('click', loadDash)
+$('refreshBtn').addEventListener('click', () => loadDash(true))
 $('signoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); show('login') })
 
-loadDash()
+loadDash(false)
 </script>
 </body>
 </html>
