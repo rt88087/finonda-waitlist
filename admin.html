@@ -94,6 +94,13 @@
       <div class="chartbox"><canvas id="growthChart" role="img" aria-label="Line chart of new users, expenses and waitlist signups per day over the last 30 days"></canvas></div>
     </div>
 
+    <div class="sect"><span class="dot"></span>App health &amp; reliability</div>
+    <div class="cards" id="cardsHealth"></div>
+    <div class="panel" style="margin-top:14px">
+      <h3>Uptime &amp; screen performance</h3>
+      <div style="font-size:13px;color:var(--slate);line-height:1.55">Uptime / downtime and screen-load timings come from external monitors, not the app database. <b>Not wired yet</b> — set up <b>UptimeRobot</b> (uptime/downtime) and <b>Sentry</b> (crashes + screen-load timings), then these panels light up. Ask Claude to configure them.</div>
+    </div>
+
     <div class="sect"><span class="dot"></span>Users &amp; transactions <span style="font-weight:400;font-size:12px;color:var(--slate)">(aggregate)</span></div>
     <div class="cards" id="cardsTx"></div>
     <div class="split">
@@ -158,6 +165,14 @@ function card(label, n, sub) {
   return '<div class="card"><div class="l">' + label + '</div><div class="n">' + n + '</div>' + (sub ? '<div class="s">' + sub + '</div>' : '') + '</div>'
 }
 
+function relTime(ts) {
+  const diff = Date.now() - new Date(ts).getTime()
+  const mins = Math.round(diff / 60000)
+  if (mins < 60) return mins + 'm ago'
+  const hrs = Math.round(mins / 60); if (hrs < 24) return hrs + 'h ago'
+  return Math.round(hrs / 24) + 'd ago'
+}
+
 function render(s) {
   $('asof').textContent = 'As of ' + new Date(s.generated_at).toLocaleString('en-IN')
   $('cardsApp').innerHTML =
@@ -169,6 +184,16 @@ function render(s) {
     card('OCR scans (30d)', num.format(s.scans_30d), num.format(s.scans_total) + ' all-time') +
     card('Notifications (30d)', num.format(s.notifications_30d)) +
     card('AI scan logs', num.format(s.ai_scans_total))
+
+  const scanOk = s.scan_success_30d || 0, scanFail = s.scan_failed_30d || 0
+  const scanRate = (scanOk + scanFail) ? Math.round(scanOk / (scanOk + scanFail) * 100) : null
+  $('cardsHealth').innerHTML =
+    card('Scan success rate', scanRate == null ? '—' : scanRate + '%', scanOk + ' ok / ' + scanFail + ' failed (30d)') +
+    card('Scan failures (30d)', num.format(scanFail)) +
+    card('Duplicate bills blocked (30d)', num.format(s.duplicate_blocked_30d)) +
+    card('Expenses confirmed (30d)', num.format(s.expense_confirmed_30d)) +
+    card('Last app activity', s.last_activity ? relTime(s.last_activity) : '—', s.last_activity ? new Date(s.last_activity).toLocaleDateString('en-IN') : '') +
+    card('Scans ok (all-time)', num.format(s.scan_success_total), num.format(s.scan_failed_total) + ' failed')
 
   $('cardsTx').innerHTML =
     card('Expenses', num.format(s.expenses_count), num.format(s.expenses_7d) + ' in last 7d') +
