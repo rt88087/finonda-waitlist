@@ -97,8 +97,9 @@
     <div class="sect"><span class="dot"></span>App health &amp; reliability</div>
     <div class="cards" id="cardsHealth"></div>
     <div class="panel" style="margin-top:14px">
-      <h3>Uptime &amp; screen performance</h3>
-      <div style="font-size:13px;color:var(--slate);line-height:1.55">Uptime / downtime and screen-load timings come from external monitors, not the app database. <b>Not wired yet</b> — set up <b>UptimeRobot</b> (uptime/downtime) and <b>Sentry</b> (crashes + screen-load timings), then these panels light up. Ask Claude to configure them.</div>
+      <h3>Uptime — UptimeRobot (30-day)</h3>
+      <div class="cards" id="cardsUptime"></div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.55;margin-top:12px;border-top:1px solid var(--line);padding-top:10px"><b>Screen-load performance &amp; crashes</b> come from <b>Sentry</b> (still to be wired). Ask Claude to configure it.</div>
     </div>
 
     <div class="sect"><span class="dot"></span>Users &amp; transactions <span style="font-weight:400;font-size:12px;color:var(--slate)">(aggregate)</span></div>
@@ -154,10 +155,10 @@ async function loadDash(showErrors) {
   }
   if (res.status === 403) { setErr('This account is signed in but is not an administrator.'); await sb.auth.signOut(); show('login'); return }
   if (!res.ok) { if (showErrors) setErr('Could not load stats (' + res.status + ').'); return }
-  const { email, stats } = await res.json()
+  const { email, stats, uptime } = await res.json()
   setErr('')
   $('who').textContent = email
-  try { render(stats) } catch (e) { console.error('render failed', e); setErr('Signed in, but a chart failed to render.') }
+  try { render(stats, uptime) } catch (e) { console.error('render failed', e); setErr('Signed in, but a chart failed to render.') }
   show('dash')
 }
 
@@ -173,7 +174,7 @@ function relTime(ts) {
   return Math.round(hrs / 24) + 'd ago'
 }
 
-function render(s) {
+function render(s, uptime) {
   $('asof').textContent = 'As of ' + new Date(s.generated_at).toLocaleString('en-IN')
   $('cardsApp').innerHTML =
     card('Waitlist signups', num.format(s.waitlist_total)) +
@@ -194,6 +195,23 @@ function render(s) {
     card('Expenses confirmed (30d)', num.format(s.expense_confirmed_30d)) +
     card('Last app activity', s.last_activity ? relTime(s.last_activity) : '—', s.last_activity ? new Date(s.last_activity).toLocaleDateString('en-IN') : '') +
     card('Scans ok (all-time)', num.format(s.scan_success_total), num.format(s.scan_failed_total) + ' failed')
+
+  const upEl = $('cardsUptime')
+  if (upEl) {
+    if (uptime && uptime.length) {
+      const stText = { 2: 'Up', 9: 'Down', 8: 'Down?', 0: 'Paused', 1: 'Checking' }
+      const stCol = { 2: '#2E9E5B', 9: '#C0442E', 8: '#C98A3E', 0: '#9AA39F', 1: '#9AA39F' }
+      upEl.innerHTML = uptime.map((m) => {
+        const r30 = (m.ratios && m.ratios.length >= 3) ? m.ratios[2] : (m.ratios && m.ratios[0])
+        const t = stText[m.status] || '—', c = stCol[m.status] || '#9AA39F'
+        return '<div class="card"><div class="l">' + escapeHtml(m.name) + '</div>' +
+          '<div class="n" style="color:' + c + '">' + (r30 != null && !isNaN(r30) ? r30 + '%' : '—') + '</div>' +
+          '<div class="s"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + c + ';margin-right:5px;vertical-align:1px"></span>' + t + '</div></div>'
+      }).join('')
+    } else {
+      upEl.innerHTML = '<div style="font-size:13px;color:var(--slate)">No uptime data yet — add the UptimeRobot API key (UPTIMEROBOT_API_KEY secret) to light this up.</div>'
+    }
+  }
 
   $('cardsTx').innerHTML =
     card('Expenses', num.format(s.expenses_count), num.format(s.expenses_7d) + ' in last 7d') +
