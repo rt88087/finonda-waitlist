@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="finonda — managing home expenses, made effortless. Join the waitlist for early access.">
+<meta property="og:title" content="finonda — coming soon">
+<meta property="og:description" content="Track your home's spending, keep warranties in one place, and get a gentle nudge before a service is due. Join the waitlist.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://finonda.com">
+<title>finonda — coming soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{--teal:#0E5C6E;--teal2:#0891B2;--terra:#C96A4B;--ink:#1E2B2E;--slate:#5E6E72;--paper:#EFEBE4;--cream:#FBFAF7;--line:#E1DCD3;--green:#2E9E5B}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#E6E1D8;font-family:'Inter',system-ui,sans-serif;color:var(--ink);padding:26px 16px;min-height:100vh}
+  .page{max-width:620px;margin:0 auto;background:var(--paper);border-radius:24px;overflow:hidden;box-shadow:0 10px 34px rgba(30,43,46,.12)}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:22px 26px}
+  .pill{font-size:11px;font-weight:600;color:var(--teal);background:#E1EEF1;border-radius:999px;padding:5px 12px;letter-spacing:.03em}
+  /* screens */
+  .screen{display:none}
+  .screen.active{display:block}
+  /* hero */
+  .hero{padding:8px 30px 30px;text-align:center}
+  .h1{font-family:'Poppins';font-weight:600;font-size:31px;line-height:1.15;margin:8px 0 12px;letter-spacing:-.5px}
+  .h1 .accent{color:var(--terra)}
+  .lede{font-size:15px;color:var(--slate);max-width:500px;margin:0 auto;line-height:1.6}
+  .tagline{font-family:'Poppins';font-weight:500;font-size:13px;color:var(--teal);margin-top:16px}
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:54px;min-height:48px;background:var(--teal);color:#fff;border:none;border-radius:13px;padding:0 26px;font-family:'Poppins';font-weight:500;font-size:16px;cursor:pointer;margin-top:24px;width:100%;max-width:340px}
+  .cta:hover{background:#0b4c5c}
+  .cta:focus-visible{outline:3px solid #0891B255;outline-offset:2px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--teal);background:#E1EEF1;border-radius:999px;padding:6px 13px;font-weight:500;margin-top:16px}
+  .quiet{display:inline-block;margin-top:16px;font-size:13.5px;color:var(--slate);text-decoration:underline;background:none;border:none;cursor:pointer;font-family:'Inter'}
+  .quiet:hover{color:var(--teal)}
+  /* survey */
+  .survey{padding:22px 26px 26px}
+  .shead{text-align:center;margin-bottom:16px}
+  .prog{height:6px;background:#E4DFD7;border-radius:3px;max-width:300px;margin:0 auto 8px;overflow:hidden}
+  .prog i{display:block;height:100%;background:var(--teal);border-radius:3px;transition:width .3s ease;width:14%}
+  .pcount{font-size:12px;color:var(--slate)}
+  .qn{font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--terra);text-transform:uppercase;text-align:center;margin-bottom:6px}
+  .qt{font-family:'Poppins';font-weight:500;font-size:18px;margin:0 0 16px;line-height:1.35;text-align:center}
+  .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:13px 13px;margin-bottom:10px;font-size:14px;line-height:1.35;cursor:pointer;font-family:'Inter';color:var(--ink);min-height:48px}
+  .opt:hover{border-color:var(--teal)}
+  .opt:focus-visible{outline:3px solid #0891B255;outline-offset:2px}
+  .opt.on{border-color:var(--teal);background:#0E5C6E0A;box-shadow:0 0 0 2px rgba(14,92,110,.10)}
+  .oi{width:34px;height:34px;border-radius:10px;background:#F1EEE8;color:var(--slate);display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+  .opt.on .oi{background:#0E5C6E14;color:var(--teal)}
+  .otxt{flex:1}.otxt b{font-weight:600}
+  .snav{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--slate);background:none;border:none;cursor:pointer;font-family:'Inter';padding:8px 4px;min-height:44px}
+  .back:hover{color:var(--teal)}
+  .back[disabled]{visibility:hidden}
+  /* join */
+  .signup{padding:26px 30px 30px;text-align:center}
+  .signup h2{font-family:'Poppins';font-weight:500;font-size:20px;margin:0 0 6px}
+  .signup .sub{font-size:14px;color:var(--slate);max-width:400px;margin:0 auto 18px;line-height:1.5}
+  .form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap}
+  .email{flex:1;min-width:200px;height:54px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 15px;font-size:15px;font-family:'Inter';color:var(--ink)}
+  .email:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 2px rgba(14,92,110,.12)}
+  .join{height:54px;min-height:48px;background:var(--teal);color:#fff;border:none;border-radius:12px;padding:0 24px;font-family:'Poppins';font-weight:500;font-size:15px;cursor:pointer;white-space:nowrap}
+  .join:hover{background:#0b4c5c}
+  .join[disabled]{opacity:.6;cursor:default}
+  .priv{font-size:11.5px;color:#9AA39F;margin-top:12px;line-height:1.5}
+  .priv a{color:var(--slate)}
+  .err{color:#C0442E;font-size:13px;margin-top:10px;min-height:18px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  /* confirm */
+  .confirm{text-align:center;padding:34px 30px 40px}
+  .cic{width:62px;height:62px;border-radius:18px;background:#E4F2E9;color:#2E7D49;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 16px}
+  .confirm h2{font-family:'Poppins';font-weight:600;font-size:24px;margin:0 0 8px}
+  .confirm p{font-size:14.5px;color:var(--slate);max-width:400px;margin:0 auto 20px;line-height:1.55}
+  .share{display:inline-flex;align-items:center;gap:8px;height:48px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 20px;font-family:'Poppins';font-weight:500;font-size:14px;color:var(--teal);cursor:pointer}
+  .share:hover{border-color:var(--teal)}
+  /* teaser */
+  .teaser{padding:6px 26px 30px;display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line)}
+  .teaser{padding-top:24px}
+  .tcard{flex:1;min-width:150px;text-align:center}
+  .tic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 10px}
+  .tt{font-family:'Poppins';font-weight:500;font-size:14px}.tb{font-size:12px;color:var(--slate);margin-top:4px;line-height:1.5}
+  .foot{text-align:center;font-size:11.5px;color:#9AA39F;padding:0 30px 26px}
+  @media(max-width:480px){.hero{padding:6px 22px 26px}.h1{font-size:26px}.survey{padding:20px 18px 22px}.signup{padding:24px 22px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <svg width="118" height="26" viewBox="-19 -4 3942 873" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="finonda">
+      <path d="M323 266L323 381L226 381L226 820L84 820L84 381L21 381L21 266L84 266L84 238Q84 136 142 88Q200 40 317 43L317 161Q266 160 246 178Q226 196 226 243L226 266L323 266M420 266L560 266L560 820L420 820L420 266M1011 258Q1110 258 1171 320.50Q1232 383 1232 495L1232 820L1092 820L1092 514Q1092 448 1059 412.50Q1026 377 969 377Q911 377 877.50 412.50Q844 448 844 514L844 820L704 820L704 266L844 266L844 335Q872 299 915.50 278.50Q959 258 1011 258M1611 829Q1531 829 1467 793.50Q1403 758 1366.50 693Q1330 628 1330 543Q1330 458 1367.50 393Q1405 328 1470 292.50Q1535 257 1615 257Q1695 257 1760 292.50Q1825 328 1862.50 393Q1900 458 1900 543Q1900 628 1861.50 693Q1823 758 1757.50 793.50Q1692 829 1611 829M1611 707Q1649 707 1682.50 688.50Q1716 670 1736 633Q1756 596 1756 543Q1756 464 1714.50 421.50Q1673 379 1613 379Q1553 379 1512.50 421.50Q1472 464 1472 543Q1472 622 1511.50 664.50Q1551 707 1611 707M2310 258Q2409 258 2470 320.50Q2531 383 2531 495L2531 820L2391 820L2391 514Q2391 448 2358 412.50Q2325 377 2268 377Q2210 377 2176.50 412.50Q2143 448 2143 514L2143 820L2003 820L2003 266L2143 266L2143 335Q2171 299 2214.50 278.50Q2258 258 2310 258M2628 541Q2628 457 2661.50 392Q2695 327 2753 292Q2811 257 2882 257Q2936 257 2985 280.50Q3034 304 3063 343L3063 80L3205 80L3205 820L3063 820L3063 738Q3037 779 2990 804Q2943 829 2881 829Q2811 829 2753 793Q2695 757 2661.50 691.50Q2628 626 2628 541M3064 543Q3064 492 3044 455.50Q3024 419 2990 399.50Q2956 380 2917 380Q2878 380 2845 399Q2812 418 2791.50 454.50Q2771 491 2771 541Q2771 591 2791.50 628.50Q2812 666 2845.50 686Q2879 706 2917 706Q2956 706 2990 686.50Q3024 667 3044 630.50Q3064 594 3064 543M3306 541Q3306 457 3339.50 392Q3373 327 3430.50 292Q3488 257 3559 257Q3621 257 3667.50 282Q3714 307 3742 345L3742 266L3883 266L3883 820L3742 820L3742 739Q3715 778 3667.50 803.50Q3620 829 3558 829Q3488 829 3430.50 793Q3373 757 3339.50 691.50Q3306 626 3306 541M3742 543Q3742 492 3722 455.50Q3702 419 3668 399.50Q3634 380 3595 380Q3556 380 3523 399Q3490 418 3469.50 454.50Q3449 491 3449 541Q3449 591 3469.50 628.50Q3490 666 3523.50 686Q3557 706 3595 706Q3634 706 3668 686.50Q3702 667 3722 630.50Q3742 594 3742 543" fill="#0E5C6E"/>
+      <circle cx="490" cy="118" r="82" fill="#C96A4B"/>
+    </svg>
+    <span class="pill">Coming soon</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="screen active" id="scr-hero">
+    <div class="hero">
+      <div class="h1">Where does the <span class="accent">small stuff</span> actually go?</div>
+      <div class="lede">The coffees, the deliveries, the odd top-up — they quietly add up. finonda tracks your spending, keeps your warranties in one place, and gives you a gentle nudge before a service is due — so your whole home stays on top of itself, effortlessly.</div>
+      <div class="tagline">Managing home expenses, made effortless.</div>
+      <div><span class="chip"><i class="ti ti-clock" style="font-size:14px"></i> 7 quick taps · about a minute</span></div>
+      <div><button class="cta" id="btn-start"><i class="ti ti-sparkles"></i> Take the 1-minute peek</button></div>
+      <div><button class="quiet" id="btn-skip-hero">Skip to join the waitlist</button></div>
+    </div>
+    <div class="teaser">
+      <div class="tcard"><div class="tic" style="background:#E1EEF1;color:var(--teal)"><i class="ti ti-send"></i></div><div class="tt">Just share it</div><div class="tb">Share a bill, a service schedule or a warranty — finonda takes it from there.</div></div>
+      <div class="tcard"><div class="tic" style="background:#FBEAD0;color:#C98A3E"><i class="ti ti-home"></i></div><div class="tt">Your whole home</div><div class="tb">Expenses, bills, budgets, warranties — together, tracked with your family.</div></div>
+      <div class="tcard"><div class="tic" style="background:#F3E4DC;color:var(--terra)"><i class="ti ti-chart-donut"></i></div><div class="tt">See where it goes</div><div class="tb">Calm insights on the money you never quite track — no guilt, just clarity.</div></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="screen" id="scr-quiz">
+    <div class="survey">
+      <div class="shead">
+        <div class="prog"><i id="prog-bar"></i></div>
+        <div class="pcount" id="prog-count">1 of 7</div>
+      </div>
+      <div class="qn" id="q-kicker"></div>
+      <div class="qt" id="q-title"></div>
+      <div id="q-options"></div>
+      <div class="snav">
+        <button class="back" id="btn-back"><i class="ti ti-arrow-left"></i> Back</button>
+        <button class="quiet" id="btn-skip-quiz" style="margin-top:0">Skip to join</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOIN -->
+  <div class="screen" id="scr-join">
+    <div class="signup">
+      <h2 id="join-head">That's it — you're all set.</h2>
+      <div class="sub" id="join-sub">Pop your email in to save your spot. We'll save your answers with it.</div>
+      <form class="form" id="join-form" novalidate>
+        <input type="email" class="email" id="email" placeholder="you@email.com" autocomplete="email" inputmode="email" aria-label="Your email address" required>
+        <input type="text" class="hp" id="company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="join" id="btn-join">Join the waitlist</button>
+      </form>
+      <div class="err" id="join-err" role="alert"></div>
+      <div class="priv">We'll only email you about early access. No spam. See our <a href="/privacy" target="_blank" rel="noopener">privacy note</a>.</div>
+    </div>
+  </div>
+
+  <!-- CONFIRM -->
+  <div class="screen" id="scr-confirm">
+    <div class="confirm">
+      <div class="cic"><i class="ti ti-circle-check"></i></div>
+      <h2>You're on the list!</h2>
+      <p>We'll email you the moment finonda opens. Thanks for helping us build it.</p>
+      <button class="share" id="btn-share"><i class="ti ti-send"></i> Share with a friend</button>
+    </div>
+  </div>
+
+  <div class="foot">finonda.com · Coming soon · Made for Indian homes</div>
+</div>
+
+<script>
+/* ============================================================
+   finonda waitlist — config
+   ANON_KEY is a PUBLIC key (safe to embed). Paste the project's
+   anon/publishable key below before hosting.
+   ============================================================ */
+var CONFIG = {
+  SUPABASE_URL: 'https://dzwspklnuuvbssszqxci.supabase.co',
+  FUNCTION_PATH: '/functions/v1/waitlist-signup',
+  ANON_KEY: 'sb_publishable_3lwrDJZBDkVyP8q9DI0sxQ_Sxvkb2cc',
+  SOURCE: 'coming_soon'
+};
+
+/* Questions — final copy, do not paraphrase (from concept) */
+var QUESTIONS = [
+  { key:'q1_track', kicker:'How you track today', title:'How do you keep track of what your home spends?', options:[
+    { icon:'ti-notebook', text:'A notebook or diary' },
+    { icon:'ti-table', text:'A spreadsheet — Excel or Google Sheets' },
+    { icon:'ti-message-2', text:'Notes app, or a WhatsApp-to-myself' },
+    { icon:'ti-robot', html:'A money app that auto-reads SMS <b>(misses cash &amp; UPI/QR)</b>' },
+    { icon:'ti-wallet', text:"Honestly, I don't — I just watch the bank balance" }
+  ]},
+  { key:'q2_annoying', kicker:'The most annoying part', title:"What's the most annoying part of tracking money today?", options:[
+    { icon:'ti-keyboard', text:'Typing every bill by hand' },
+    { icon:'ti-shopping-cart', html:'"Groceries ₹4,000" — but what was actually <b>in</b> it?' },
+    { icon:'ti-users', text:'No easy way to share with my partner or family' },
+    { icon:'ti-mood-neutral', text:'Apps that make me feel bad for spending' }
+  ]},
+  { key:'q3_sharing', kicker:'Sharing with family', title:'When you tally the household budget, do you actually know how much your partner spent on shared expenses too?', options:[
+    { icon:'ti-heart-handshake', text:'Yes — we log everything together, so we always know' },
+    { icon:'ti-calculator', text:'We ballpark it, but never the exact combined total' },
+    { icon:'ti-arrows-shuffle', text:'Not really — everyone pays for bits and we hope it evens out' },
+    { icon:'ti-user', text:'I manage my money completely solo' }
+  ]},
+  { key:'q4_warranties', kicker:'Warranties', title:'When a gadget acts up, do you know where its warranty is?', options:[
+    { icon:'ti-folder', text:'Filed and organised' },
+    { icon:'ti-search', text:"Somewhere in my email or WhatsApp — I'll have to dig" },
+    { icon:'ti-help-circle', text:'No idea — I just hope it’s still covered' }
+  ]},
+  { key:'q5_upkeep', kicker:'Home upkeep', title:'How do you remember home services — car, RO filter, chimney?', options:[
+    { icon:'ti-phone', text:'I wait for the service-centre reminder calls' },
+    { icon:'ti-tool', text:'I remember… usually only after something stops working' },
+    { icon:'ti-calendar', text:'Calendar alerts — but no cost or history' }
+  ]},
+  { key:'q6_want', kicker:'What you want to see', title:'If it could sort your spending for you, what would you most want to see?', options:[
+    { icon:'ti-coffee', text:'Where the little things go — small orders & snacks, added up' },
+    { icon:'ti-home', text:'Needs vs nice-to-haves — fixed commitments vs lifestyle extras' },
+    { icon:'ti-refresh', text:'Sneaky subscriptions — streaming, gym, apps I forgot' },
+    { icon:'ti-bolt', text:'The bare minimum to keep the home running' }
+  ]},
+  { key:'q7_goal', kicker:'Your goal this year', title:"What's your money goal for the home this year?", options:[
+    { icon:'ti-eye', text:'Just understand where it goes' },
+    { icon:'ti-plane', text:'Trim the waste so we can save, travel or invest' },
+    { icon:'ti-heart-handshake', text:'Stop the "where did the cash go?" debates' },
+    { icon:'ti-sparkles', text:'Build calmer money habits' }
+  ]}
+];
+
+var state = { step:0, answers:{}, joined:false };
+
+function $(id){ return document.getElementById(id); }
+function show(scr){
+  var s = document.querySelectorAll('.screen');
+  for(var i=0;i<s.length;i++) s[i].classList.remove('active');
+  $(scr).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---- UTM + referrer capture ---- */
+function captureUtm(){
+  var p = new URLSearchParams(window.location.search);
+  var utm = {};
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+    if(p.get(k)) utm[k.replace('utm_','')] = p.get(k);
+  });
+  return utm;
+}
+var UTM = captureUtm();
+var REFERRER = document.referrer || null;
+
+/* ---- analytics (server-side via edge fn only; client stub) ---- */
+function track(event, props){ /* PostHog muted till DPDP; answers jsonb is the insight source */ }
+
+/* ---- quiz rendering ---- */
+function renderStep(){
+  var q = QUESTIONS[state.step];
+  $('prog-count').textContent = (state.step+1) + ' of ' + QUESTIONS.length;
+  $('prog-bar').style.width = Math.round(((state.step+1)/QUESTIONS.length)*100) + '%';
+  $('q-kicker').textContent = (state.step+1) + ' of ' + QUESTIONS.length + ' · ' + q.kicker;
+  $('q-title').textContent = q.title;
+  var box = $('q-options'); box.innerHTML='';
+  q.options.forEach(function(opt){
+    var chosen = state.answers[q.key] === (opt.text || opt.html);
+    var b = document.createElement('button');
+    b.type='button';
+    b.className = 'opt' + (chosen?' on':'');
+    b.setAttribute('role','radio');
+    b.setAttribute('aria-checked', chosen?'true':'false');
+    var label = opt.html ? opt.html : (opt.text||'');
+    b.innerHTML = '<span class="oi"><i class="ti '+opt.icon+'"></i></span><span class="otxt">'+label+'</span>' + (chosen?'<i class="ti ti-check" style="color:var(--teal);font-size:18px"></i>':'');
+    b.addEventListener('click', function(){ choose(q, opt); });
+    box.appendChild(b);
+  });
+  $('btn-back').disabled = (state.step===0);
+}
+function choose(q, opt){
+  var val = opt.text || opt.html;
+  // store readable string; strip any bold tags for clean analysis
+  state.answers[q.key] = val.replace(/<[^>]+>/g,'');
+  track('quiz_q_answered', { q:q.key, a:state.answers[q.key] });
+  if(state.step < QUESTIONS.length-1){
+    state.step++; renderStep();
+  } else {
+    track('quiz_complete', {});
+    show('scr-join');
+  }
+}
+
+/* ---- events ---- */
+$('btn-start').addEventListener('click', function(){ track('quiz_start',{}); state.step=0; renderStep(); show('scr-quiz'); });
+$('btn-skip-hero').addEventListener('click', function(){ show('scr-join'); });
+$('btn-skip-quiz').addEventListener('click', function(){ show('scr-join'); });
+$('btn-back').addEventListener('click', function(){ if(state.step>0){ state.step--; renderStep(); } });
+
+$('join-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var email = ($('email').value||'').trim().toLowerCase();
+  var errBox = $('join-err');
+  errBox.textContent='';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    errBox.textContent = 'Please enter a valid email address.'; return;
+  }
+  if($('company').value){ // honeypot filled = bot; silently succeed
+    show('scr-confirm'); return;
+  }
+  var btn = $('btn-join'); btn.disabled=true; btn.textContent='Saving…';
+  var payload = { email:email, answers:state.answers, source:CONFIG.SOURCE, utm:UTM, referrer:REFERRER, company:$('company').value };
+  fetch(CONFIG.SUPABASE_URL + CONFIG.FUNCTION_PATH, {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json', 'apikey':CONFIG.ANON_KEY, 'Authorization':'Bearer '+CONFIG.ANON_KEY },
+    body: JSON.stringify(payload)
+  }).then(function(r){
+    if(!r.ok) throw new Error('bad status '+r.status);
+    return r.json().catch(function(){ return {}; });
+  }).then(function(){
+    state.joined=true; track('waitlist_join',{});
+    show('scr-confirm');
+  }).catch(function(){
+    btn.disabled=false; btn.textContent='Join the waitlist';
+    errBox.textContent = 'Something went wrong saving your spot. Please try again.';
+  });
+});
+
+$('btn-share').addEventListener('click', function(){
+  var shareData = { title:'finonda', text:'Managing home expenses, made effortless. Join the finonda waitlist:', url:'https://finonda.com' };
+  if(navigator.share){ navigator.share(shareData).catch(function(){}); }
+  else if(navigator.clipboard){ navigator.clipboard.writeText('https://finonda.com'); $('btn-share').innerHTML='<i class="ti ti-check"></i> Link copied'; }
+});
+
+/* init */
+renderStep();
+track('page_view',{});
+</script>
+</body>
+</html>
