@@ -115,6 +115,25 @@
   .xr.xtot{border-top:1px solid var(--line);margin-top:5px;padding-top:8px;font-weight:600}
   .xr.xtot span{color:var(--ink)}
   @media(max-width:480px){.xray{flex-direction:column;align-items:stretch}.xarrow{margin:2px auto;transform:rotate(90deg)}}
+  /* Insights section (Option A) — app screenshot beside copy */
+  .insights{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin:22px 26px 0;padding:22px;background:var(--paper);border:1px solid var(--line);border-radius:16px}
+  .inscopy{flex:1;min-width:220px}
+  .insh{font-family:'Poppins';font-weight:600;font-size:21px;color:var(--teal);line-height:1.25;margin-bottom:10px}
+  .insp{font-size:14px;color:var(--slate);line-height:1.6}
+  .insphone{width:216px;flex:none;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:14px 14px 16px}
+  .insph{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--slate);margin-bottom:8px}
+  .insph b{color:var(--teal);font-family:'Poppins';font-weight:600;font-size:14px}
+  .instot{font-size:23px;font-weight:600;color:var(--ink);text-align:center;font-family:'Poppins';margin-bottom:4px}
+  .inslabel{font-size:11px;font-weight:600;color:var(--ink);margin:11px 0 7px}
+  .insr{display:flex;justify-content:space-between;font-size:11px;color:var(--ink);margin-bottom:3px}
+  .insr span:last-child{color:var(--slate)}
+  .instk{height:5px;background:#EAE4DB;border-radius:3px;margin-bottom:8px}
+  .insfl{height:5px;background:var(--teal);border-radius:3px}
+  .insby{display:flex;align-items:center;gap:12px}
+  .insdo{width:58px;height:58px;border-radius:50%;flex:none;position:relative;background:conic-gradient(#0891B2 0 31%,#C96A4B 31% 49%,#C98A3E 49% 60%,#6E7B8A 60% 68%,#B4805A 68% 74%,#2E9E5B 74% 100%)}
+  .inshole{position:absolute;inset:15px;background:var(--cream);border-radius:50%}
+  .insdt{font-size:11px;color:var(--slate);line-height:1.55}
+  @media(max-width:560px){.insights{flex-direction:column;margin:22px 22px 0}.insphone{width:100%;max-width:300px}}
   .result{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:440px;margin:0 auto 18px;text-align:left}
   .result .rq{font-size:13px;color:var(--slate);margin:0 0 8px;line-height:1.5}
   .result .ra{font-size:14px;color:var(--ink);margin:0;line-height:1.55}
@@ -168,6 +187,26 @@
             <div class="xr xtot"><span>Total</span><span>₹2,400</span></div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="insights">
+      <div class="inscopy">
+        <div class="insh">A calm picture of the month</div>
+        <div class="insp">finonda turns your bills into insights you can actually read — where it goes by category, the taxes and charges you didn't notice, and where you shop most.</div>
+      </div>
+      <div class="insphone">
+        <div class="insph"><b>finonda<span style="color:var(--terra)">.</span></b><span>This month</span></div>
+        <div class="instot">₹35,300</div>
+        <div class="inslabel">Spend by category</div>
+        <div class="insr"><span>Groceries</span><span>₹14.2k</span></div><div class="instk"><div class="insfl" style="width:100%"></div></div>
+        <div class="insr"><span>Utilities</span><span>₹6.8k</span></div><div class="instk"><div class="insfl" style="width:48%"></div></div>
+        <div class="insr"><span>Dining</span><span>₹4.3k</span></div><div class="instk"><div class="insfl" style="width:30%"></div></div>
+        <div class="inslabel">Beyond the items</div>
+        <div class="insby"><div class="insdo"><div class="inshole"></div></div><div class="insdt">Taxes &amp; charges<br><b style="color:var(--ink)">₹1,680 on top</b><br><span style="color:var(--green)">₹940 saved</span></div></div>
+        <div class="inslabel">Where you shop</div>
+        <div class="insr"><span>BigBasket</span><span>₹9.8k</span></div><div class="instk"><div class="insfl" style="width:100%"></div></div>
+        <div class="insr"><span>Amazon</span><span>₹6.4k</span></div><div class="instk"><div class="insfl" style="width:65%"></div></div>
+        <div class="insr"><span>Swiggy</span><span>₹4.7k</span></div><div class="instk"><div class="insfl" style="width:48%"></div></div>
       </div>
     </div>
   </div>
