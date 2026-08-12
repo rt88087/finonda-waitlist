@@ -54,9 +54,9 @@
   .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:13px 13px;margin-bottom:10px;font-size:14px;line-height:1.35;cursor:pointer;font-family:'Inter';color:var(--ink);min-height:48px}
   .opt:hover{border-color:var(--teal)}
   .opt:focus-visible{outline:3px solid #0891B255;outline-offset:2px}
-  .opt.on{border-color:var(--teal);background:#0E5C6E0A;box-shadow:0 0 0 2px rgba(14,92,110,.10)}
+  .opt.on{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:none}
   .oi{width:34px;height:34px;border-radius:10px;background:#F1EEE8;color:var(--slate);display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
-  .opt.on .oi{background:#0E5C6E14;color:var(--teal)}
+  .opt.on .oi{background:rgba(255,255,255,.18);color:#fff}
   .otxt{flex:1}.otxt b{font-weight:600}
   .snav{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
   .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--slate);background:none;border:none;cursor:pointer;font-family:'Inter';padding:8px 4px;min-height:44px}
@@ -276,45 +276,45 @@ var CONFIG = {
 /* Questions — final copy (landing-page change spec, Section E). Do not paraphrase. */
 var QUESTIONS = [
   { key:'q1_track', kicker:'How you track today', title:'How do you keep track of what your home spends?', options:[
-    { icon:'ti-notebook', text:'A notebook or diary' },
-    { icon:'ti-table', text:'A spreadsheet (Excel or Sheets)' },
-    { icon:'ti-message-2', text:'Notes app, or WhatsApp to myself' },
-    { icon:'ti-robot', text:'A money app that reads my SMS' },
-    { icon:'ti-wallet', text:"Honestly, I don't. I just watch the balance." }
+    { icon:'ti-notebook', c:'amber', text:'A notebook or diary' },
+    { icon:'ti-table', c:'green', text:'A spreadsheet (Excel or Sheets)' },
+    { icon:'ti-brand-whatsapp', c:'teal', text:'Notes app, or WhatsApp to myself' },
+    { icon:'ti-device-mobile-message', c:'blue', text:'A money app that reads my SMS' },
+    { icon:'ti-eye', c:'coral', text:"Honestly, I don't. I just watch the balance." }
   ]},
   { key:'q2_annoying', kicker:'The most annoying part', title:"What's the most annoying part of tracking money today?", options:[
-    { icon:'ti-keyboard', text:'Typing every bill by hand' },
-    { icon:'ti-shopping-cart', text:'"Groceries ₹4,000." But what was in it?' },
-    { icon:'ti-users', text:'No easy way to share it with anyone else at home' },
-    { icon:'ti-mood-neutral', text:'Apps that make me feel bad for spending' }
+    { icon:'ti-keyboard', c:'blue', text:'Typing every bill by hand' },
+    { icon:'ti-shopping-cart', c:'coral', text:'"Groceries ₹4,000." But what was in it?' },
+    { icon:'ti-users', c:'violet', text:'No easy way to share it with anyone else at home' },
+    { icon:'ti-mood-neutral', c:'amber', text:'Apps that make me feel bad for spending' }
   ]},
   { key:'q3_sharing', kicker:'The whole house', title:'Does anyone in your house know what the house actually spent?', options:[
-    { icon:'ti-heart-handshake', text:'Yes. We log it together.' },
-    { icon:'ti-calculator', text:'We ballpark it. Never the real total.' },
-    { icon:'ti-arrows-shuffle', text:'Everyone pays for bits and we hope it evens out' },
-    { icon:'ti-user', text:"It's just me" }
+    { icon:'ti-heart-handshake', c:'coral', text:'Yes. We log it together.' },
+    { icon:'ti-calculator', c:'blue', text:'We ballpark it. Never the real total.' },
+    { icon:'ti-arrows-shuffle', c:'amber', text:'Everyone pays for bits and we hope it evens out' },
+    { icon:'ti-user', c:'teal', text:"It's just me" }
   ]},
   { key:'q4_warranties', kicker:'Warranties', title:'When a gadget acts up, do you know where its warranty is?', options:[
-    { icon:'ti-folder', text:"Filed and organised. I'm that person." },
-    { icon:'ti-search', text:"Somewhere in my email. I'll have to dig." },
-    { icon:'ti-help-circle', text:"No idea. I just hope it's still covered." }
+    { icon:'ti-folder', c:'green', text:"Filed and organised. I'm that person." },
+    { icon:'ti-search', c:'amber', text:"Somewhere in my email. I'll have to dig." },
+    { icon:'ti-help-circle', c:'coral', text:"No idea. I just hope it's still covered." }
   ]},
   { key:'q5_upkeep', kicker:'Home upkeep', title:"How do you remember home services? Car, RO filter, chimney, the AC nobody's cleaned.", options:[
-    { icon:'ti-phone', text:'I wait for the service-centre to call' },
-    { icon:'ti-tool', text:'I remember. Usually after it stops working.' },
-    { icon:'ti-calendar', text:'Calendar alerts, with no cost or history' }
+    { icon:'ti-phone', c:'blue', text:'I wait for the service-centre to call' },
+    { icon:'ti-tool', c:'amber', text:'I remember. Usually after it stops working.' },
+    { icon:'ti-calendar', c:'violet', text:'Calendar alerts, with no cost or history' }
   ]},
   { key:'q6_want', kicker:'What you want to see', title:'If it could sort your spending for you, what would you most want to see?', options:[
-    { icon:'ti-coffee', text:'Where the little things go. Snacks, small orders, all of it.' },
-    { icon:'ti-home', text:'Needs vs nice-to-haves' },
-    { icon:'ti-refresh', text:'Subscriptions I forgot I had' },
-    { icon:'ti-bolt', text:'The bare minimum to keep the home running' }
+    { icon:'ti-coffee', c:'coral', text:'Where the little things go. Snacks, small orders, all of it.' },
+    { icon:'ti-home', c:'teal', text:'Needs vs nice-to-haves' },
+    { icon:'ti-refresh', c:'green', text:'Subscriptions I forgot I had' },
+    { icon:'ti-bolt', c:'amber', text:'The bare minimum to keep the home running' }
   ]},
   { key:'q7_goal', kicker:'Your goal this year', title:"What's your money goal for the home this year?", options:[
-    { icon:'ti-eye', text:'Just understand where it goes' },
-    { icon:'ti-plane', text:'Trim the waste so we can actually save something' },
-    { icon:'ti-heart-handshake', text:'Stop the "where did the cash go?" debates' },
-    { icon:'ti-sparkles', text:'Build better money habits' }
+    { icon:'ti-eye', c:'teal', text:'Just understand where it goes' },
+    { icon:'ti-plane', c:'blue', text:'Trim the waste so we can actually save something' },
+    { icon:'ti-heart-handshake', c:'coral', text:'Stop the "where did the cash go?" debates' },
+    { icon:'ti-sparkles', c:'amber', text:'Build better money habits' }
   ]}
 ];
 
@@ -387,6 +387,10 @@ var REFERRER = document.referrer || null;
 function track(event, props){ /* PostHog muted till DPDP; answers jsonb is the insight source */ }
 
 /* ---- quiz rendering ---- */
+var TINTS = {
+  teal:['#E1EEF1','#0E5C6E'], green:['#E7F3D9','#4C7A16'], coral:['#F7ECE6','#C96A4B'],
+  amber:['#FAEEDA','#BA7517'], blue:['#E4EFFA','#2E74C4'], violet:['#EEEDFE','#534AB7']
+};
 function renderStep(){
   var q = QUESTIONS[state.step];
   $('prog-count').textContent = (state.step+1) + ' of ' + QUESTIONS.length;
@@ -402,7 +406,9 @@ function renderStep(){
     b.setAttribute('role','radio');
     b.setAttribute('aria-checked', chosen?'true':'false');
     var label = opt.html ? opt.html : (opt.text||'');
-    b.innerHTML = '<span class="oi"><i class="ti '+opt.icon+'"></i></span><span class="otxt">'+label+'</span>' + (chosen?'<i class="ti ti-check" style="color:var(--teal);font-size:18px"></i>':'');
+    var tint = TINTS[opt.c] || TINTS.teal;
+    var oiStyle = chosen ? '' : ' style="background:'+tint[0]+';color:'+tint[1]+'"';
+    b.innerHTML = '<span class="oi"'+oiStyle+'><i class="ti '+opt.icon+'"></i></span><span class="otxt">'+label+'</span>' + (chosen?'<i class="ti ti-check" style="color:#fff;font-size:18px;margin-left:auto"></i>':'');
     b.addEventListener('click', function(){ choose(q, opt); });
     box.appendChild(b);
   });
