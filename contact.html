@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Contact Finonda — ask a question, report an issue, or request deletion of your account and data.">
+<title>finonda — Contact us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#0E5C6E;--terra:#C96A4B;--ink:#1E2B2E;--slate:#5E6E72;--paper:#EFEBE4;--cream:#FBFAF7;--line:#E1DCD3}
+  html,body{margin:0;padding:0}
+  body{background:#E6E1D8;font-family:'Inter',system-ui,sans-serif;color:var(--ink);padding:26px 16px;min-height:100vh}
+  .page{max-width:680px;margin:0 auto;background:var(--paper);border-radius:24px;overflow:hidden;box-shadow:0 10px 34px rgba(30,43,46,.12)}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:22px 30px}
+  .pill{font-size:11px;font-weight:600;color:var(--teal);background:#E1EEF1;border-radius:999px;padding:5px 12px;letter-spacing:.03em}
+  .body{padding:8px 34px 34px}
+  h1{font-family:'Poppins';font-weight:600;font-size:26px;line-height:1.2;margin:6px 0 6px;letter-spacing:-.4px}
+  .lead{font-size:15px;color:var(--slate);line-height:1.6;margin:0 0 16px}
+  h2{font-family:'Poppins';font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--terra);margin:24px 0 8px}
+  p{font-size:14.5px;color:var(--ink);line-height:1.65;margin:0 0 12px}
+  a{color:var(--teal)}
+  label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin:12px 0 5px}
+  input,select,textarea{width:100%;box-sizing:border-box;font-family:'Inter',sans-serif;font-size:14.5px;color:var(--ink);
+    background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+  textarea{min-height:120px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal)}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+  .btn{margin-top:16px;width:100%;background:var(--teal);color:var(--cream);border:none;border-radius:12px;
+    padding:13px 16px;font-family:'Poppins';font-weight:600;font-size:15px;cursor:pointer}
+  .btn:disabled{opacity:.6;cursor:default}
+  .note{background:#F3EEE6;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--slate);line-height:1.6;margin:10px 0 2px}
+  .ok{display:none;background:#E1EEF1;border:1px solid #BcdCe2;border-radius:12px;padding:16px;color:var(--teal);font-size:14.5px;line-height:1.6;margin-top:14px}
+  .err{display:none;color:var(--terra);font-size:13px;margin-top:10px}
+  .direct{margin-top:6px;font-size:14px;color:var(--ink)}
+  .foot{text-align:center;font-size:11.5px;color:#9AA39F;padding:0 30px 26px}
+  .foot a{color:#9AA39F;text-decoration:underline}
+  @media(max-width:480px){.body{padding:6px 22px 26px}h1{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <a href="/" aria-label="finonda home">
+      <svg width="118" height="26" viewBox="-19 -4 3942 873" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="finonda">
+        <path d="M323 266L323 381L226 381L226 820L84 820L84 381L21 381L21 266L84 266L84 238Q84 136 142 88Q200 40 317 43L317 161Q266 160 246 178Q226 196 226 243L226 266L323 266M420 266L560 266L560 820L420 820L420 266M1011 258Q1110 258 1171 320.50Q1232 383 1232 495L1232 820L1092 820L1092 514Q1092 448 1059 412.50Q1026 377 969 377Q911 377 877.50 412.50Q844 448 844 514L844 820L704 820L704 266L844 266L844 335Q872 299 915.50 278.50Q959 258 1011 258M1611 829Q1531 829 1467 793.50Q1403 758 1366.50 693Q1330 628 1330 543Q1330 458 1367.50 393Q1405 328 1470 292.50Q1535 257 1615 257Q1695 257 1760 292.50Q1825 328 1862.50 393Q1900 458 1900 543Q1900 628 1861.50 693Q1823 758 1757.50 793.50Q1692 829 1611 829M1611 707Q1649 707 1682.50 688.50Q1716 670 1736 633Q1756 596 1756 543Q1756 464 1714.50 421.50Q1673 379 1613 379Q1553 379 1512.50 421.50Q1472 464 1472 543Q1472 622 1511.50 664.50Q1551 707 1611 707M2310 258Q2409 258 2470 320.50Q2531 383 2531 495L2531 820L2391 820L2391 514Q2391 448 2358 412.50Q2325 377 2268 377Q2210 377 2176.50 412.50Q2143 448 2143 514L2143 820L2003 820L2003 266L2143 266L2143 335Q2171 299 2214.50 278.50Q2258 258 2310 258M2628 541Q2628 457 2661.50 392Q2695 327 2753 292Q2811 257 2882 257Q2936 257 2985 280.50Q3034 304 3063 343L3063 80L3205 80L3205 820L3063 820L3063 738Q3037 779 2990 804Q2943 829 2881 829Q2811 829 2753 793Q2695 757 2661.50 691.50Q2628 626 2628 541M3064 543Q3064 492 3044 455.50Q3024 419 2990 399.50Q2956 380 2917 380Q2878 380 2845 399Q2812 418 2791.50 454.50Q2771 491 2771 541Q2771 591 2791.50 628.50Q2812 666 2845.50 686Q2879 706 2917 706Q2956 706 2990 686.50Q3024 667 3044 630.50Q3064 594 3064 543M3306 541Q3306 457 3339.50 392Q3373 327 3430.50 292Q3488 257 3559 257Q3621 257 3667.50 282Q3714 307 3742 345L3742 266L3883 266L3883 820L3742 820L3742 739Q3715 778 3667.50 803.50Q3620 829 3558 829Q3488 829 3430.50 793Q3373 757 3339.50 691.50Q3306 626 3306 541M3742 543Q3742 492 3722 455.50Q3702 419 3668 399.50Q3634 380 3595 380Q3556 380 3523 399Q3490 418 3469.50 454.50Q3449 491 3449 541Q3449 591 3469.50 628.50Q3490 666 3523.50 686Q3557 706 3595 706Q3634 706 3668 686.50Q3702 667 3722 630.50Q3742 594 3742 543" fill="#0E5C6E"/>
+        <circle cx="490" cy="118" r="82" fill="#C96A4B"/>
+      </svg>
+    </a>
+    <span class="pill">Contact</span>
+  </div>
+
+  <div class="body">
+    <h1>Contact us</h1>
+    <p class="lead">We'd love to hear from you — whether it's a question, a problem, feedback, or a request about your data. Pick a reason below and send us a note, and we'll get back to you by email.</p>
+    <p class="direct">You can also email us directly at <a href="mailto:support@finonda.com">support@finonda.com</a>.</p>
+
+    <h2>Send us a message</h2>
+    <form id="contactForm">
+      <!-- Honeypot: bots fill this; humans never see it. The edge function drops any submission with it set. -->
+      <input type="text" name="company" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label for="reason">Reason for contacting us</label>
+      <select id="reason" name="reason" required>
+        <option value="" disabled selected>Choose a reason…</option>
+        <option>General question</option>
+        <option>Account &amp; data deletion request</option>
+        <option>Report a bug or problem</option>
+        <option>Billing or subscription</option>
+        <option>Privacy or data request</option>
+        <option>Feedback or suggestion</option>
+        <option>Something else</option>
+      </select>
+
+      <div id="deletionNote" class="note" style="display:none">
+        <strong>Requesting account &amp; data deletion?</strong> Tell us below and <strong>send this from the email address on your Finonda account</strong> so we can verify it's you. On a verified request we delete your account and the personal data associated with it — your profile, expenses, reminders, warranties, budgets and Nest data. Deletion is scheduled to complete within <strong>14 days</strong> of the request (a short grace period during which it can be cancelled). Some records may be retained only where the law requires it. You can also do this inside the app: <em>Profile → Delete Account</em>.
+      </div>
+
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required>
+
+      <label for="email">Your email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+
+      <button class="btn" id="submitBtn" type="submit">Send message</button>
+      <div class="err" id="errBox"></div>
+    </form>
+
+    <div class="ok" id="okBox">Thanks — your message is on its way to our team. We'll reply to the email you gave us. For a deletion request, we'll verify it's your account email before we proceed.</div>
+  </div>
+
+  <div class="foot">
+    <a href="/">finonda.com</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
+  </div>
+</div>
+
+<script>
+  var reason = document.getElementById('reason');
+  var note = document.getElementById('deletionNote');
+  reason.addEventListener('change', function () {
+    note.style.display = /deletion/i.test(reason.value) ? 'block' : 'none';
+  });
+
+  // Same Supabase project + public anon key the waitlist form uses. ANON_KEY is a public
+  // (publishable) key — safe to embed. Reuses the project's proven SMTP-email path.
+  var CONFIG = {
+    SUPABASE_URL: 'https://dzwspklnuuvbssszqxci.supabase.co',
+    FUNCTION_PATH: '/functions/v1/contact-submit',
+    ANON_KEY: 'sb_publishable_3lwrDJZBDkVyP8q9DI0sxQ_Sxvkb2cc'
+  };
+
+  var form = document.getElementById('contactForm');
+  var btn = document.getElementById('submitBtn');
+  var okBox = document.getElementById('okBox');
+  var errBox = document.getElementById('errBox');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errBox.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    var payload = {
+      reason: document.getElementById('reason').value,
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value,
+      company: document.getElementById('company').value,
+      source: 'contact_page'
+    };
+
+    fetch(CONFIG.SUPABASE_URL + CONFIG.FUNCTION_PATH, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': CONFIG.ANON_KEY,
+        'Authorization': 'Bearer ' + CONFIG.ANON_KEY
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(function (r) { if (!r.ok) throw new Error('bad status ' + r.status); return r.json(); })
+    .then(function (res) {
+      if (res && res.ok) {
+        form.style.display = 'none';
+        okBox.style.display = 'block';
+      } else {
+        throw new Error((res && res.error) || 'Submission failed');
+      }
+    })
+    .catch(function () {
+      btn.disabled = false; btn.textContent = 'Send message';
+      errBox.textContent = "Sorry — we couldn't send that. Please email us directly at support@finonda.com.";
+      errBox.style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
