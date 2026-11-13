@@ -49,7 +49,7 @@
   <div class="body">
     <h1>Privacy Policy</h1>
     <p class="lead">Plain version: Finonda is a household management app that helps you keep your expenses, warranties, services, reminders and budgets organised in one place. This policy explains what we collect, why, who processes it, and the rights you have &mdash; wherever you live. We never sell your data or use it for advertising, and you can see, correct or delete it at any time.</p>
-    <p class="eff">Effective date: 12 November 2026 &middot; Applies to the Finonda mobile app, web app, and finonda.com.</p>
+    <p class="eff">Effective date: 13 November 2026 &middot; Applies to the Finonda mobile app, web app, and finonda.com.</p>
 
     <h2>1. Who we are</h2>
     <p>Finonda is operated by <strong>FINONDA TECHNOLOGIES (OPC) PRIVATE LIMITED</strong> ("Finonda", "we", "us"), which is the controller / data fiduciary for the personal data described here. You can reach us about anything in this policy &mdash; including any privacy question, request or complaint &mdash; at <a href="mailto:support@finonda.com">support@finonda.com</a>. Our Grievance Officer is named in section 11.</p>
@@ -60,7 +60,9 @@
     <h2>3. What we collect</h2>
     <ul>
       <li><strong>Account details</strong> &mdash; your email address, and a display name and profile details you choose to add.</li>
+      <li><strong>How you sign in</strong> &mdash; you can sign in with your email or with your Google account. If you use Google, Google confirms your identity and provides your email address to us for sign-in.</li>
       <li><strong>The records and transactions you enter or scan</strong> &mdash; your household entries such as expenses, service reminders, reminders, warranties and budgets, and the line items, amounts, merchants and dates within them.</li>
+      <li><strong>Notifications</strong> &mdash; a device notification token so we can send you reminders and alerts (for example when someone asks to join your Nest, or a request is approved). You can turn notifications off at any time in your device settings.</li>
       <li><strong>Receipt images</strong> &mdash; when you scan a bill, the photo is sent for reading and only the extracted details are kept; see section 4.</li>
       <li><strong>Household ("Nest") information</strong> &mdash; the Nests you create or join and their members, so shared entries work.</li>
       <li><strong>Technical &amp; diagnostic data</strong> &mdash; limited device and error information used to keep the app reliable (see section 5).</li>
@@ -87,11 +89,12 @@
       <tr><td>Supabase</td><td>Stores your account &amp; household data; handles sign-in. Encrypted in transit and at rest.</td><td>AWS Mumbai, India (ap-south-1)</td></tr>
       <tr><td>Google Gemini (Google LLC)</td><td>Reads scanned receipts / smart-add text to extract details. Images not stored by us; not used to train Google's models.</td><td>United States</td></tr>
       <tr><td>Sentry</td><td>Error &amp; crash reporting so we can fix problems. We filter out personal and transaction details before they are sent.</td><td>United States</td></tr>
+      <tr><td>Firebase Cloud Messaging (Google LLC)</td><td>Delivers your push notifications (reminders, join requests and approvals). We store a device notification token to send them; no entry content is included.</td><td>United States</td></tr>
     </table>
     <p>These providers act on our instructions as processors under data-processing terms. We do not sell or rent your data, we do not "share" it for cross-context behavioural advertising, and we never use it for advertising.</p>
 
     <h2>7. International transfers</h2>
-    <p>Your core data is stored in <strong>India</strong> (Supabase, AWS Mumbai). Some processing involves transfers to the <strong>United States</strong> &mdash; receipt/text reading by Google Gemini and error reporting via Sentry. Where the GDPR applies, such transfers are made under appropriate safeguards (such as the European Commission's Standard Contractual Clauses) or because the transfer is necessary to provide the service you requested. Where the DPDP Act applies, transfers are permitted to countries not restricted by the Central Government. We limit what is sent in every case.</p>
+    <p>Your core data is stored in <strong>India</strong> (Supabase, AWS Mumbai). Some processing involves transfers to the <strong>United States</strong> &mdash; receipt/text reading by Google Gemini, error reporting via Sentry, and push-notification delivery via Firebase Cloud Messaging. Where the GDPR applies, such transfers are made under appropriate safeguards (such as the European Commission's Standard Contractual Clauses) or because the transfer is necessary to provide the service you requested. Where the DPDP Act applies, transfers are permitted to countries not restricted by the Central Government. We limit what is sent in every case.</p>
 
     <h2>8. Your rights</h2>
     <p>You can always <strong>access</strong> a summary of your data, <strong>correct</strong> most of it directly in the app, <strong>erase</strong> it (Profile &rarr; Delete Account, or by writing to us), <strong>withdraw consent</strong> (including turning off optional insights), and <strong>export</strong> your data. Depending on where you live you also have:</p>
@@ -119,7 +122,7 @@
     <p>Use the in-app options, or write to <a href="mailto:support@finonda.com">support@finonda.com</a>. We will verify your request and respond within the timelines required by the law that applies to you. Exercising your rights is free, and we will not treat you differently for doing so.</p>
 
     <h2>10. How long we keep your data</h2>
-    <p>We keep your data for as long as your account is active. When you request deletion, the actual purge is <strong>scheduled 14 days after your request</strong> (a grace period during which you can cancel and recover your account). After the purge, your personal data is removed from our active systems, and copies in encrypted backups age out of rotation shortly afterwards. Aggregated, non-identifying information may be retained.</p>
+    <p>We keep your data for as long as your account is active. When you request deletion, the actual purge is <strong>scheduled 14 days after your request</strong> (a grace period during which you can cancel and recover your account). After the purge, your personal data is removed from our active systems, and copies in encrypted backups age out of rotation shortly afterwards. If you were part of a shared Nest, entries that belong to the whole household (such as shared expenses, warranties and reminders) are kept for the other members but <strong>de-identified</strong> &mdash; your name is removed and they are re-attributed to a &ldquo;former member&rdquo;, so they can no longer be linked to you. Aggregated, non-identifying information may also be retained.</p>
 
     <h2>11. Grievance &amp; complaints</h2>
     <p>If you have a complaint about how your personal data is handled, contact our <strong>Grievance Officer, Rosamma Thomas</strong>, at <a href="mailto:support@finonda.com">support@finonda.com</a> with the details. We will acknowledge and work to resolve your grievance within the timelines required by applicable law. EEA/UK users may also complain to their local supervisory authority; India users may approach the Data Protection Board of India.</p>
